@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kmbeast.mapper.TagsMapper">
+
+    <insert id="save">
+        INSERT INTO tags (name)
+        VALUES (#{name})
+    </insert>
+    <update id="update">
+        UPDATE tags
+        <set>
+            <if test="name!=null and name!=' '">
+                name=#{name}
+            </if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+    <delete id="batchDelete">
+        DELETE from tags where id in
+        <foreach collection="ids" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+
+    <select id="query" resultMap="BaseResultMapper">
+        SELECT t.id, t.name
+        FROM tags t
+        <where>
+            <if test="name != null and name != ''">
+                t.name LIKE CONCAT('%', #{name}, '%')
+            </if>
+        </where>
+        ORDER BY t.id DESC
+        LIMIT #{size} OFFSET #{current}
+    </select>
+
+    <select id="queryCount" resultType="Integer">
+        SELECT count(*)
+        FROM tags t
+        <where>
+            <if test="name != null and name != ''">
+                t.name LIKE CONCAT('%', #{name}, '%')
+            </if>
+        </where>
+    </select>
+    <resultMap id="BaseResultMapper" type="cn.kmbeast.pojo.entity.Tags">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+    </resultMap>
+
+</mapper>
