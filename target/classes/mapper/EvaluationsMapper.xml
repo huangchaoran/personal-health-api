@@ -1,5 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.kmbeast.mapper.EvaluationsMapper">
 
     <!-- resultMap 用于定义结果集映射 -->
@@ -140,7 +142,7 @@
 
     <!--    批量查询二级评论信息-->
     <select id="selectChildComments" parameterType="list" resultType="Integer">
-        SELECT e.id FROM evaluations e WHERE e.parentId IN
+        SELECT e.id FROM evaluations e WHERE e.parent_id IN
         <foreach collection="ids" item="id" open="(" separator="," close=")">
             #{id}
         </foreach>

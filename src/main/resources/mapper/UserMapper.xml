@@ -106,9 +106,9 @@
                 AND u.create_time BETWEEN #{startTime} AND #{endTime}
             </if>
         </where>
-        ORDER BY u.id DESC,
+        ORDER BY u.id DESC
         <if test="current != null and size != null">
-            LIMIT #{current},#{size}
+             LIMIT #{current},#{size}
         </if>
     </select>
 
