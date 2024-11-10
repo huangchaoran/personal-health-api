@@ -1,5 +1,4 @@
 package cn.kmbeast.controller;
-
 import cn.kmbeast.aop.Pager;
 import cn.kmbeast.pojo.api.Result;
 import cn.kmbeast.pojo.dto.query.extend.NewsQueryDto;
@@ -7,10 +6,8 @@ import cn.kmbeast.pojo.entity.News;
 import cn.kmbeast.pojo.vo.NewsVO;
 import cn.kmbeast.service.NewsService;
 import org.springframework.web.bind.annotation.*;
-
 import javax.annotation.Resource;
 import java.util.List;
-
 /**
  * 健康资讯的 Controller
  */
@@ -20,7 +17,6 @@ public class NewsController {
 
     @Resource
     private NewsService newsService;
-
     /**
      * 健康资讯新增
      *

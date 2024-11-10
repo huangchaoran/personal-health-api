@@ -72,6 +72,4 @@ public class NewsServiceImpl implements NewsService {
         Integer totalCount = newsMapper.queryCount(newsQueryDto);
         return PageResult.success(newsList, totalCount);
     }
-
-
 }

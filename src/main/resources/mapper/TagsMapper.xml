@@ -23,7 +23,6 @@
     </delete>
 
     <select id="query" resultMap="BaseResultMap">
-
         SELECT t.*
         FROM tags t
         <where>
