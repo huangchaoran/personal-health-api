@@ -8,17 +8,17 @@ import lombok.EqualsAndHashCode;
 @Data
 public class NewsQueryDto extends QueryDto {
 
-        /**
-         * 资讯名
-         */
-        private String name;
-        /**
-         * 标签ID
-         */
-        private Integer tagId;
-        /**
-         * 是否推荐
-         */
-        private Boolean isTop;
+    /**
+     * 资讯名
+     */
+    private String name;
+    /**
+     * 标签ID
+     */
+    private Integer tagId;
+    /**
+     * 是否推荐
+     */
+    private Boolean isTop;
 
 }

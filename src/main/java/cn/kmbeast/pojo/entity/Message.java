@@ -1,54 +1,46 @@
 package cn.kmbeast.pojo.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 
+/**
+ * 消息实体
+ */
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
-
 public class Message {
+    /**
+     * 主键ID
+     */
     private Integer id;
     /**
-     * 消息表的主键
+     * 消息内容
      */
     private String content;
     /**
-     * 消息的内容
+     * 消息类型
      */
     private Integer messageType;
     /**
-     * 消息的类型
+     * 接收者用户ID
      */
-    private Integer receiverID;
+    private Integer receiverId;
     /**
-     * 接受者的id
+     * 发送者用户ID
      */
-    private Integer senderID;
+    private Integer senderId;
     /**
-     * 发送者的id
+     * 消息是否已经阅读  新增时设置为 0：false ，1：true
      */
-    private boolean isRead;
+    private Boolean isRead;
     /**
-     * 是否已读
-     * 已读为1
-     * 未读为0
+     * 内容ID  如果消息类型是属于互动相关的数据（评论被别人评论了、你的评论被别人点赞了）
      */
-    private Integer contentID;
+    private Integer contentId;
     /**
-     * 内容id（被评论，评论被点赞）
+     * 消息发送时间
      */
-    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createTime;
-    /**
-     * 消息的发送时间
-     */
-
 }

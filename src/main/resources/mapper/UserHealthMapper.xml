@@ -1,27 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.kmbeast.mapper.UserHealthMapper">
-    <insert id="save">
+
+    <insert id="batchSave">
         INSERT INTO user_health (user_id, health_model_config_id, value, create_time)
-        VALUES (#{userId}, #{healthModelConfigId}, #{value}, #{createTime})
+        VALUES
+        <foreach collection="list" item="userHealth" index="index" separator=",">
+            (#{userHealth.userId},#{userHealth.healthModelConfigId},#{userHealth.value},#{userHealth.createTime})
+        </foreach>
     </insert>
+
+    <update id="update">
+        UPDATE user_health
+        <set>
+            <if test="value != null and value != ''">
+                value = #{value},
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
     <delete id="batchDelete" parameterType="list">
         DELETE FROM user_health WHERE id IN
         <foreach collection="ids" item="id" open="(" separator="," close=")">
             #{id}
         </foreach>
     </delete>
-    <update id="update">
-        update user_health
-        <set>
-            <if test="value!=null">
-                value=#{value},
-            </if>
-        </set>
-        where id=#{id}
-    </update>
+
     <select id="query" resultMap="BaseResultMap">
-        SELECT u.user_name,uh.*,hmc.name,hmc.unit,hmc.symbol,hmc.value_range
+
+        SELECT uh.*,u.user_name,hmc.name,hmc.unit,hmc.symbol,hmc.value_range
         FROM user_health uh
         LEFT JOIN user u ON u.id = uh.user_id
         LEFT JOIN health_model_config hmc ON hmc.id = uh.health_model_config_id
@@ -29,13 +37,16 @@
             <if test="userId != null">
                 AND uh.user_id = #{userId}
             </if>
+            <if test="healthModelConfigId != null">
+                AND uh.health_model_config_id = #{healthModelConfigId}
+            </if>
             <if test="startTime != null and endTime != null">
                 AND uh.create_time BETWEEN #{startTime} AND #{endTime}
             </if>
         </where>
         ORDER BY uh.create_time DESC
         <if test="current != null and size != null">
-        LIMIT #{current},#{size}
+            LIMIT #{current},#{size}
         </if>
 
     </select>
@@ -47,6 +58,9 @@
         <where>
             <if test="userId != null">
                 AND uh.user_id = #{userId}
+            </if>
+            <if test="healthModelConfigId != null">
+                AND uh.health_model_config_id = #{healthModelConfigId}
             </if>
             <if test="startTime != null and endTime != null">
                 AND uh.create_time BETWEEN #{startTime} AND #{endTime}
@@ -68,4 +82,5 @@
         <result column="symbol" property="symbol"/>
         <result column="value_range" property="valueRange"/>
     </resultMap>
+
 </mapper>

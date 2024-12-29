@@ -1,34 +1,30 @@
 package cn.kmbeast.pojo.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import java.time.LocalDateTime;
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
 
+/**
+ * 资讯的收藏实体
+ */
+@Data
 public class NewsSave {
+    /**
+     * ID
+     */
     private Integer id;
     /**
-     * 咨询文章收藏的主键id
+     * 用户ID
      */
     private Integer userId;
-    /**‘
-     * 收藏用户的id
+    /**
+     * 健康资讯ID
      */
     private Integer newsId;
     /**
-     * 被收藏文章的id
+     * 收藏的时间
      */
-    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createTime;
-    /**
-     * 咨询文章收藏的时间
-     */
-
 }

@@ -6,7 +6,7 @@ import lombok.Setter;
 /**
  * 通用响应
  *
- * @author 【吕鑫】
+ * @author 【B站：程序员晨星】
  * @param <T> 泛型
  */
 @Setter

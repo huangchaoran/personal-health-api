@@ -4,27 +4,35 @@ import cn.kmbeast.pojo.dto.query.base.QueryDto;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-@Data
 @EqualsAndHashCode(callSuper = true)
+@Data
 public class HealthModelConfigQueryDto extends QueryDto {
-    private  Integer userId;
+
+    /**
+     * 模型ID
+     */
+    private Integer id;
+
     /**
      * 用户ID
      */
+    private Integer userId;
+
+    /**
+     * 配置名
+     */
     private String name;
     /**
-     * 用户创建的模型的名称
+     * 配置简介
      */
     private String detail;
     /**
-     * 用户配置模型的简介
+     * 模型配置单位
      */
     private String unit;
     /**
-     * 用户配置模型的单位
+     * 模型配置符号
      */
     private String symbol;
-    /**
-     * 用户模型的符号
-     */
+
 }

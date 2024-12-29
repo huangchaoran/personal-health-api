@@ -39,13 +39,43 @@
         </foreach>
     </delete>
 
+    <select id="queryAdmin" resultMap="BaseResultMap">
+
+        SELECT h.*
+        FROM health_model_config h
+        <where>
+            <if test="id != null">
+                AND h.id = #{id}
+            </if>
+            <if test="name != null and name != ''">
+                AND h.name LIKE concat('%',#{name},'%')
+            </if>
+            <if test="detail != null and detail != ''">
+                AND h.detail LIKE concat('%',#{detail},'%')
+            </if>
+            <if test="unit != null and unit != ''">
+                AND h.unit LIKE concat('%',#{unit},'%')
+            </if>
+            <if test="symbol != null and symbol != ''">
+                AND h.symbol LIKE concat('%',#{symbol},'%')
+            </if>
+        </where>
+        ORDER BY h.id DESC
+        <if test="current != null and size != null">
+            LIMIT #{current},#{size}
+        </if>
+    </select>
+
     <select id="query" resultMap="BaseResultMap">
 
         SELECT h.*
         FROM health_model_config h
         <where>
+            <if test="id != null">
+                AND h.id = #{id}
+            </if>
             <if test="userId != null">
-                AND h.user_id = #{userId}
+                AND (h.user_id = #{userId} OR h.user_id IS NULL)
             </if>
             <if test="name != null and name != ''">
                 AND h.name LIKE concat('%',#{name},'%')

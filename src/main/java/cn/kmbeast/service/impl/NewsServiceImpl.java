@@ -63,13 +63,15 @@ public class NewsServiceImpl implements NewsService {
     /**
      * 健康资讯查询
      *
-     * @param newsQueryDto 查询参数
+     * @param NewsQueryDto 查询参数
      * @return Result<List < NewsVO>>
      */
     @Override
-    public Result<List<NewsVO>> query(NewsQueryDto newsQueryDto) {
-        List<NewsVO> newsList = newsMapper.query(newsQueryDto);
-        Integer totalCount = newsMapper.queryCount(newsQueryDto);
-        return PageResult.success(newsList, totalCount);
+    public Result<List<NewsVO>> query(NewsQueryDto NewsQueryDto) {
+        List<NewsVO> NewsList = newsMapper.query(NewsQueryDto);
+        Integer totalCount = newsMapper.queryCount(NewsQueryDto);
+        return PageResult.success(NewsList, totalCount);
     }
+
+
 }

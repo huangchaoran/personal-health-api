@@ -7,8 +7,9 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class TagsQueryDto extends QueryDto {
+
     /**
-     * 将标签名传进来进行模糊查询
+     * 标签名
      */
     private String name;
 

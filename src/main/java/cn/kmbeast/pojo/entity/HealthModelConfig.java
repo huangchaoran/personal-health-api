@@ -1,24 +1,42 @@
 package cn.kmbeast.pojo.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
 
-//健康模型
+/**
+ * 健康模型实体类
+ */
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
-
 public class HealthModelConfig {
-
-    private Integer id;/*模型表的主键*/
-    private Integer userId;/*用户id*/
-    private String name;/*用户姓名*/
-    private String detail;/*图标*/
-    private String cover;/*封面*/
-    private String unit;/*单位*/
-    private String symbol;/*模型*/
-    private String valueRange;/*正常范围*/
+    /**
+     * 主键
+     */
+    private Integer id;
+    /**
+     * 用户ID
+     */
+    private Integer userId;
+    /**
+     * 配置名
+     */
+    private String name;
+    /**
+     * 配置简介
+     */
+    private String detail;
+    /**
+     * 图标
+     */
+    private String cover;
+    /**
+     * 单位
+     */
+    private String unit;
+    /**
+     * 符号
+     */
+    private String symbol;
+    /**
+     * 正常值范围   10,20 (10,20)
+     */
+    private String valueRange;
 }

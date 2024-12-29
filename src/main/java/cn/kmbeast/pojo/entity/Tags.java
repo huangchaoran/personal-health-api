@@ -1,24 +1,18 @@
 package cn.kmbeast.pojo.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+
+/**
+ * 标签表
+ */
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
-
-
 public class Tags {
-
+    /**
+     * ID
+     */
     private Integer id;
     /**
-     * tag的id
+     * 标签名
      */
     private String name;
-    /**
-     * tag的名字
-     */
 }
-
